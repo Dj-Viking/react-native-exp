@@ -1,6 +1,10 @@
 import { inputTextChange } from "./inputTextActions"
-import { addTodo } from "./todosActions"
+import { 
+  addTodo, 
+  deleteTodo,
+} from "./todosActions"
 export const Actions = {
   inputTextChange,
-  addTodo
+  addTodo,
+  deleteTodo,
 }

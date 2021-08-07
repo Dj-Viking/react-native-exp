@@ -1,53 +1,47 @@
 import React from "react";
 import { StatusBar } from 'expo-status-bar';
-import { View, Text, TextInput, Button, StyleSheet } from "react-native";
-import { Todo, MyRootState } from "../types";
+import { View, Text, TextInput, Button } from "react-native";
+import { Todo, MyRootState, DeleteTodoPayload, AddTodoPayload } from "../types";
 //REDUX IMPORTS
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  Actions
-} from "../actions/index";
+import { Actions } from "../actions/index";
+import Styles from "../stylesheets"
 
-const Home: React.FC<{}> = () => {
- 
-  const { inputTextChange, addTodo } = Actions;
+const Home: React.FC<{}> = (): JSX.Element => {
+
+  const { inputStyles, viewStyles } = Styles;
+  const { inputTextChange, addTodo, deleteTodo } = Actions;
   const { inputText } = useSelector((state: MyRootState) => state.inputText);
   const { todos } = useSelector((state: MyRootState) => state.todos)
   const dispatch = useDispatch();
 
-  const inputStyles = StyleSheet.create({
-    input: {
-      height: 40,
-      margin: 12,
-      color: "white",
-      borderWidth: 1,
-      borderColor: "black",
-      padding: 10,
-    },
-  });
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: 'grey',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
-
   return (
     <>
-      <View style={ styles.container }>
+      <View style={ viewStyles.container }>
         <Text>
           { JSON.stringify(inputText, null, 2) }
         </Text>
         
         {todos.map((todo: Todo, index: number) => (
-          <Text 
-            key={ index } 
-            style={ todo.styles }
-          > 
-            { todo.text }
-          </Text>
+          <>
+            <TextInput 
+              key={ index } 
+              style={ todo.styles }
+              onChangeText={ text => dispatch(inputTextChange(text)) }
+            > 
+              {todo.text}
+            </TextInput>
+            <Button
+              key={ index + 234234 }
+              onPress={() => {
+                const payload: DeleteTodoPayload = {
+                  todo
+                };
+                dispatch(deleteTodo(payload))
+              }}
+              title="delete todo"
+            />
+          </>
         ))}
         <TextInput 
           style={inputStyles.input} 
@@ -59,13 +53,17 @@ const Home: React.FC<{}> = () => {
       <View>
         <Button title="add todo" 
         onPress={() => {
-          dispatch(addTodo({
-            text: inputText,
-            styles: {
-              color: "white",
-              fontSize: 30
+          const payload: AddTodoPayload = {
+            todo: {
+              text: inputText,
+              id: Date.now(),
+              styles: {
+                color: "white",
+                fontSize: 30
+              }
             }
-          }));
+          }
+          dispatch(addTodo(payload));
         }}
         />
       </View>

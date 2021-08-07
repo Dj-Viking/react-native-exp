@@ -1,17 +1,27 @@
 export interface Todo {
-  text: string;
-  styles: {
-    color: string;
-    fontSize: number;
+  text?: string;
+  id?: number;
+  styles?: {
+    color?: string;
+    fontSize?: number;
   }
 }
 export interface TodosAction {
-  type: "add",
-  payload: Todo
+  type: "add" | "delete"
+  payload: DeleteTodoPayload | AddTodoPayload
+}
+
+export interface AddTodoPayload {
+  todo?: Todo
+}
+export interface DeleteTodoPayload {
+  input?: never
+  todo?: Todo
 }
 
 export interface TodosState {
   todos: Array<Todo>
+  
 }
 
 export interface InputTextState {
