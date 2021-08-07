@@ -1,6 +1,6 @@
 import { TodosAction, TodosState} from "../types"
 
-const inputText = (state = { todos: [ { 
+const todos = (state = { todos: [ { 
                                         text: "heres a todo",
                                         styles: {
                                           color: "white",
@@ -26,4 +26,4 @@ const inputText = (state = { todos: [ {
   };
 };
 
-export default inputText;
+export default todos;
