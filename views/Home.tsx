@@ -7,7 +7,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   Actions
 } from "../actions/index";
-import { useEffect } from "react";
 
 const Home: React.FC<{}> = () => {
  
