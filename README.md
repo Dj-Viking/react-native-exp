@@ -6,5 +6,7 @@
   - [x] UPDATE
   - [x] DELETE
 * [ ] refactor to other components
-  - Inputs as their own?
-  - TodoList is it's own
+  - [x] Inputs as their own?
+    * [x] TodoInputs abstracted
+  - [ ] TodoList is it's own
+  - [x] reverse engineer the View Controller wrapper to make cells for the `Todo[]`

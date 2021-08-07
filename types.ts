@@ -1,11 +1,30 @@
-export interface Todo {
+import { TextInputProps, TextProps } from  "react-native";
+
+export interface Todo extends Object {
   text?: string;
   id?: number;
   styles?: {
     color?: string;
     fontSize?: number;
+    marginRight?: number;
+    marginLeft?: number;
+    paddingLeft?: number
   }
 }
+
+// export class Todo implements Todo {
+//   constructor(args: Todo) {
+//     Object.assign(this, {...args})
+//   }
+// }
+
+export interface TodoItemProps extends TextInputProps {
+  inputKey?: number
+  style: Todo["styles"]
+  todo: Todo
+  children?: string
+}
+
 export interface TodosAction {
   type: "add" | "delete"
   payload: DeleteTodoPayload | AddTodoPayload

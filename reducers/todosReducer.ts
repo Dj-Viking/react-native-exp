@@ -1,22 +1,7 @@
-import { TodosAction, TodosState, Todo} from "../types"
+import { TodosAction, TodosState, Todo } from "../types"
 
-const todos = (state = { todos: [ { 
-                                    text: "heres a todo",
-                                    id: 0,
-                                    styles: {
-                                      color: "white",
-                                      fontSize: 30
-                                    }
-                                  }, { 
-                                    text: "todoo 2",
-                                    id: 1,
-                                    styles: {
-                                      color: "white", 
-                                      fontSize: 30
-                                    }
-                                  }
-                                ] } as TodosState,
-                   action: TodosAction
+const todos = (state = { todos: [] } as TodosState
+             , action: TodosAction
 ): TodosState => {
   switch(action.type) {
     case "add":

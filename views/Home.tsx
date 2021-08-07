@@ -1,5 +1,6 @@
 import React from "react";
 import { StatusBar } from 'expo-status-bar';
+import TodoInput from "../components/TodoInput";
 import { View, Text, TextInput, Button } from "react-native";
 import { Todo, MyRootState, DeleteTodoPayload, AddTodoPayload } from "../types";
 //REDUX IMPORTS
@@ -9,7 +10,7 @@ import Styles from "../stylesheets"
 
 const Home: React.FC<{}> = (): JSX.Element => {
 
-  const { inputStyles, viewStyles } = Styles;
+  const { inputStyles, ListContainerStyles, CellContainerStyles, InputCellContainer, ListCellStyles } = Styles;
   const { inputTextChange, addTodo, deleteTodo } = Actions;
   const { inputText } = useSelector((state: MyRootState) => state.inputText);
   const { todos } = useSelector((state: MyRootState) => state.todos)
@@ -17,54 +18,64 @@ const Home: React.FC<{}> = (): JSX.Element => {
 
   return (
     <>
-      <View style={ viewStyles.container }>
+      <View style={ CellContainerStyles.container }>
         <Text>
-          { JSON.stringify(inputText, null, 2) }
+          { `Todo to add: ${JSON.stringify(inputText, null, 2)}` }
         </Text>
-        
-        {todos.map((todo: Todo, index: number) => (
+      </View>
+      <View style={ ListContainerStyles.container }>
+
+        {todos.map((todo: Todo, index: number, _array: Todo[]) => (
           <>
-            <TextInput 
-              key={ index } 
-              style={ todo.styles }
-              onChangeText={ text => dispatch(inputTextChange(text)) }
-            > 
-              {todo.text}
-            </TextInput>
-            <Button
-              key={ index + 234234 }
-              onPress={() => {
-                const payload: DeleteTodoPayload = {
-                  todo
-                };
-                dispatch(deleteTodo(payload))
-              }}
-              title="delete todo"
-            />
+            <View style={ ListCellStyles.container }>
+              <TodoInput
+                key={index}
+                inputKey={index + 394398493}
+                style={todo.styles}
+                todo={todo}
+                placeholder={todo.text}
+              >
+                {todo.text}
+              </TodoInput>
+              <Button
+                key={ index + 1 }
+                onPress={() => {
+                  const payload: DeleteTodoPayload = { todo };
+                  dispatch(deleteTodo(payload))
+                }}
+                title="delete todo"
+              />
+            </View>
           </>
         ))}
+
+        <StatusBar style="auto" />
+
+      </View>
+      <View style={InputCellContainer.container}>
         <TextInput 
           style={inputStyles.input} 
           value={inputText}
           onChangeText={text => dispatch(inputTextChange(text))}
         />
-        <StatusBar style="auto" />
-      </View>
-      <View>
-        <Button title="add todo" 
-        onPress={() => {
-          const payload: AddTodoPayload = {
-            todo: {
-              text: inputText,
-              id: Date.now(),
-              styles: {
-                color: "white",
-                fontSize: 30
+        <Button 
+          color="white"
+          title="add todo" 
+          onPress={() => {
+            const payload: AddTodoPayload = {
+              todo: {
+                text: inputText,
+                id: Date.now(),
+                styles: {
+                  color: "blue",
+                  fontSize: 30,
+                  marginRight: 100,
+                  paddingLeft: 10, 
+                }
               }
             }
-          }
-          dispatch(addTodo(payload));
-        }}
+            dispatch(addTodo(payload));
+          }}
         />
       </View>
     </>
