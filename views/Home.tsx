@@ -7,25 +7,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   Actions
 } from "../actions/index";
+import { useEffect } from "react";
 
 const Home: React.FC<{}> = () => {
-
-  const {
-    inputTextChange,
-    addTodo
-  } = Actions;
-
-  const inputTextState = useSelector((state: MyRootState) => state.inputText);
-  const todosState = useSelector((state: MyRootState) => state.todos)
+ 
+  const { inputTextChange, addTodo } = Actions;
+  const { inputText } = useSelector((state: MyRootState) => state.inputText);
+  const { todos } = useSelector((state: MyRootState) => state.todos)
   const dispatch = useDispatch();
-  
-  const {
-    inputText
-  } = inputTextState;
-
-  const {
-    todos
-  } = todosState;
 
   const inputStyles = StyleSheet.create({
     input: {
@@ -50,7 +39,7 @@ const Home: React.FC<{}> = () => {
     <>
       <View style={ styles.container }>
         <Text>
-          {JSON.stringify(inputText, null, 2)}
+          { JSON.stringify(inputText, null, 2) }
         </Text>
         
         {todos.map((todo: Todo, index: number) => (
@@ -63,10 +52,8 @@ const Home: React.FC<{}> = () => {
         ))}
         <TextInput 
           style={inputStyles.input} 
-          value={inputText} 
-          onChange={(event: any) => {
-            dispatch(inputTextChange(event.target.value));
-          }}
+          value={inputText}
+          onChangeText={text => dispatch(inputTextChange(text))}
         />
         <StatusBar style="auto" />
       </View>
