@@ -4,8 +4,8 @@ import { combineReducers } from 'redux';
 
 const allReducers = combineReducers(
   {
-    inputText: inputText,
-    todos: todos
+    inputText,
+    todos
   }
 )
 
