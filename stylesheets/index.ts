@@ -4,8 +4,6 @@ import { CellContainerStyles } from "./CellContainerStyles";
 import { ListContainerStyles } from "./ListContainerStyles";
 import { ListCellStyles } from "./ListCellStyles";
 import { InputCellContainer } from "./InputCellContainer";
-
-
 export default {
   ListViewStyles,
   inputStyles,
