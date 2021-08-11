@@ -1,8 +1,7 @@
 import { InputTextAction, InputTextState} from "../types"
 
-const inputText = (state = { inputText: "blah" } as InputTextState,
-                   action: InputTextAction
-): InputTextState => {
+const inputText = ( state = { inputText: "blah" } as InputTextState
+                  , action: InputTextAction ): InputTextState => {
   switch(action.type) {
     case "change":
       return {

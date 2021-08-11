@@ -16,6 +16,21 @@ const Home: React.FC<{}> = (): JSX.Element => {
   const { todos } = useSelector((state: MyRootState) => state.todos)
   const dispatch = useDispatch();
 
+  function createAddTodoPayload(inputText: string): AddTodoPayload {
+    return {
+      todo: {
+        text: inputText,
+        id: Date.now(),
+        styles: {
+          color: "blue",
+          fontSize: 30,
+          marginRight: 100,
+          paddingLeft: 10, 
+        }
+      }
+    }
+  }
+
   return (
     <>
       <View style={ CellContainerStyles.container }>
@@ -24,25 +39,25 @@ const Home: React.FC<{}> = (): JSX.Element => {
         </Text>
       </View>
       <View style={ ListContainerStyles.container }>
-
+        {/*TODO look up using flatlist for react native instead of creating a list like this because under the hood the transform might not
+        be smart enough to use the react key properties that i put on every element here...even though thats what the compiler tells me to add, when I add it, it 
+        still throws this warning....and it actually causes issues and thinks that all the elements should be rendered as the same thing.*/}
         {todos.map((todo: Todo, index: number, _array: Todo[]) => (
           <>
-            <View style={ ListCellStyles.container }>
+            <View key={(index + Date.now() / 9999).toString()} style={ ListCellStyles.container }>
               <TodoInput
                 key={index}
-                inputKey={index + 394398493}
+                inputKey={(index + Date.now()).toString()}
                 style={todo.styles}
                 todo={todo}
-                placeholder={todo.text}
               >
-                {todo.text}
+                <Text key={(index + Date.now() * 23948938493898).toString()}>
+                  {todo.text} { Date.now().toString() }
+                </Text>
               </TodoInput>
               <Button
-                key={ index + 1 }
-                onPress={() => {
-                  const payload: DeleteTodoPayload = { todo };
-                  dispatch(deleteTodo(payload))
-                }}
+                key={ (index + Date.now() / 191239238).toString() }
+                onPress={() => dispatch(deleteTodo({ todo }))}
                 title="delete todo"
               />
             </View>
@@ -61,21 +76,7 @@ const Home: React.FC<{}> = (): JSX.Element => {
         <Button 
           color="white"
           title="add todo" 
-          onPress={() => {
-            const payload: AddTodoPayload = {
-              todo: {
-                text: inputText,
-                id: Date.now(),
-                styles: {
-                  color: "blue",
-                  fontSize: 30,
-                  marginRight: 100,
-                  paddingLeft: 10, 
-                }
-              }
-            }
-            dispatch(addTodo(payload));
-          }}
+          onPress={() => dispatch(addTodo(createAddTodoPayload(inputText)))}
         />
       </View>
     </>
