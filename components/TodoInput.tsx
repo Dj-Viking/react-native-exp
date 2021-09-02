@@ -11,7 +11,6 @@ const TodoItem: React.FC<TodoItemProps> = ({todo, children}) => {
 
   return (
     <TextInput 
-      key={ todo.id?.toString() }
       style={ todo.styles }
       onChangeText={ text => dispatch(inputTextChange(text)) }
     > 
