@@ -8,7 +8,7 @@ import TodoList from "../components/TodoList";
 import { useSelector, useDispatch } from 'react-redux';
 import { Actions } from "../actions/index";
 import Styles from "../stylesheets"
-const { inputStyles, ListContainerStyles, CellContainerStyles, InputCellContainer, ListCellStyles, TodoItemStyles } = Styles;
+const { inputStyles, ListContainerStyles, CellContainerStyles, InputCellContainer } = Styles;
 const { inputTextChange, addTodo } = Actions;
 
 const Home: React.FC<{}> = (): JSX.Element => {
