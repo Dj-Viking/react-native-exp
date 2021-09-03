@@ -1,10 +1,11 @@
-import { inputTextChange } from "./inputTextActions"
-import { 
-  addTodo, 
+import { inputTextChange } from "./inputTextActions";
+import {
+  addTodo,
   deleteTodo,
-} from "./todosActions"
+} from "./todosActions";
+
 export const Actions = {
   inputTextChange,
   addTodo,
   deleteTodo,
-}
+};

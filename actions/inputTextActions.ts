@@ -1,10 +1,8 @@
-import { InputTextAction, InputTextState } from "../types"
+import { InputTextAction, InputTextState } from "../types";
 
 export const inputTextChange = (
-  data: InputTextState["inputText"]
-): InputTextAction => {
-  return {
-    type: "change",
-    payload: data
-  }
-}
+  data: InputTextState["inputText"],
+): InputTextAction => ({
+  type: "change",
+  payload: data,
+});

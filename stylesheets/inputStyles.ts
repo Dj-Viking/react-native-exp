@@ -1,4 +1,5 @@
-import { StyleSheet } from "react-native"
+import { StyleSheet } from "react-native";
+
 export const inputStyles = StyleSheet.create({
   input: {
     height: 100,
@@ -8,5 +9,5 @@ export const inputStyles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "black",
     padding: 40,
-  }
+  },
 });
