@@ -5,6 +5,7 @@ import { ListContainerStyles } from "./ListContainerStyles";
 import { ListCellStyles } from "./ListCellStyles";
 import { InputCellContainer } from "./InputCellContainer";
 import { TodoItemStyles } from "./TodoItemStyles";
+
 export default {
   ListViewStyles,
   inputStyles,
@@ -12,5 +13,5 @@ export default {
   ListContainerStyles,
   ListCellStyles,
   InputCellContainer,
-  TodoItemStyles
-}
+  TodoItemStyles,
+};

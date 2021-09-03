@@ -1,12 +1,13 @@
-import { StyleSheet } from "react-native"
+import { StyleSheet } from "react-native";
+
 export const ListCellStyles = StyleSheet.create({
   container: {
-    flex: .3,
+    flex: 0.3,
     marginTop: 0,
     marginBottom: 0,
-    backgroundColor: 'white',
-    alignItems: 'center',
+    backgroundColor: "white",
+    alignItems: "center",
     flexDirection: "row",
-    justifyContent: "space-between"
-  }
+    justifyContent: "space-between",
+  },
 });

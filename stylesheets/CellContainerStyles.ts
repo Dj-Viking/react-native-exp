@@ -1,13 +1,14 @@
-import { StyleSheet } from "react-native"
+import { StyleSheet } from "react-native";
+
 export const CellContainerStyles = StyleSheet.create({
   container: {
     display: "flex",
-    flex: .2,
+    flex: 0.2,
     marginTop: 0,
     marginBottom: 0,
-    backgroundColor: 'red',
-    alignItems: 'center',
+    backgroundColor: "red",
+    alignItems: "center",
     flexDirection: "column",
-    justifyContent: 'center',
-  }
+    justifyContent: "center",
+  },
 });
