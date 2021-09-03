@@ -1,6 +1,3 @@
-import { ReactNode } from "react";
-import { TextInputProps, TextProps } from  "react-native";
-
 export interface Todo extends Object {
   text: string;
   id?: number;
@@ -11,19 +8,6 @@ export interface Todo extends Object {
     marginLeft?: number;
     paddingLeft?: number
   }
-}
-
-// export class Todo implements Todo {
-//   constructor(args: Todo) {
-//     Object.assign(this, {...args})
-//   }
-// }
-
-export interface TodoItemProps extends TextInputProps {
-  inputKey?: number | string
-  style: Todo["styles"]
-  todo: Todo
-  children?: ReactNode
 }
 
 export interface TodosAction {
@@ -41,7 +25,7 @@ export interface DeleteTodoPayload {
 
 export interface TodosState {
   todos: Array<Todo>
-  
+
 }
 
 export interface InputTextState {
