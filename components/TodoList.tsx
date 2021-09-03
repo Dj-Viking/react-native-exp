@@ -1,9 +1,9 @@
 import React from "react";
-import { View, Text, Button, TextInput } from "react-native";
-import { MyRootState, Todo } from "../types";
+import { View, Button, TextInput } from "react-native";
+import { Todo } from "../types";
 import Styles from "../stylesheets"
 import { Actions } from "../actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { ListCellStyles } from "../stylesheets/ListCellStyles";
 const { TodoItemStyles } = Styles
 const { deleteTodo, inputTextChange } = Actions;
