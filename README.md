@@ -15,4 +15,4 @@
 * [ ] set up some api calls to retrieve data as todos from a fake API 
   - is this with UseEffect? not sure if RN has a specific way of handling XHR 
 
-* [ ] set up eslint 
+* [x] set up eslint 
