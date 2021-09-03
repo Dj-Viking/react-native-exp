@@ -5,8 +5,14 @@
   - [x] READ
   - [x] UPDATE
   - [x] DELETE
-* [ ] refactor to other components
+* [x] refactor to other components
   - [x] Inputs as their own?
     * [x] TodoInputs abstracted
-  - [ ] TodoList is it's own
+  - [x] TodoList is it's own
   - [x] reverse engineer the View Controller wrapper to make cells for the `Todo[]`
+
+
+* [ ] set up some api calls to retrieve data as todos from a fake API 
+  - is this with UseEffect? not sure if RN has a specific way of handling XHR 
+
+* [ ] set up eslint 
