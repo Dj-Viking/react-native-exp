@@ -28,6 +28,10 @@ export class User extends BaseEntity {
   @Column({ unique: true })
   email!: string;
 
+  @Field()
+  @Column()
+  token?: string;
+
   @OneToMany(() => Todo, (todo: Todo) => todo.creator)
   todos: Todo[];
 
