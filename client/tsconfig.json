@@ -6,7 +6,10 @@
   },
   "types": ["react", "react-native"],
   "include": [
-    "./**/*.ts"
+    "./**/*.ts",
+    "./**/*.tsx",
+    "babel.config.js",
+    ".eslintrc.js"
   ],
   "exclude": [
     "node_modules"
