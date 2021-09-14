@@ -1,13 +1,6 @@
 export interface Todo extends Object {
   text: string;
   id?: number;
-  styles?: {
-    color?: string;
-    fontSize?: number;
-    marginRight?: number;
-    marginLeft?: number;
-    paddingLeft?: number
-  }
 }
 
 export interface TodosAction {

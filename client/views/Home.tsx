@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 import { StatusBar } from "expo-status-bar";
 // import TodoInput from "../components/TodoInput";
 import {
@@ -16,10 +16,37 @@ const {
 } = Styles;
 const { inputTextChange, addTodo } = Actions;
 
+interface ChuckNorrisJoke {
+  categories: Array<unknown>;
+  createdAt: string; // date time stamp
+  // eslint-disable-next-line
+  icon_url: string;
+  id: string;
+  // eslint-disable-next-line
+  updated_at: string;
+  url: string;
+  value: string;
+}
+
 const Home: React.FC<Record<string, unknown>> = (): JSX.Element => {
   const { inputText } = useSelector((state: MyRootState) => state.inputText);
   const { todos } = useSelector((state: MyRootState) => state.todos);
   const dispatch = useDispatch();
+
+  const getJokes = useCallback(async () => {
+    const response = await fetch("https://api.chucknorris.io/jokes/random");
+    const json: ChuckNorrisJoke = await response.json();
+    dispatch(addTodo({
+      todo: {
+        id: Date.now(),
+        text: json.value,
+      },
+    }));
+  }, [dispatch]);
+
+  useEffect(() => {
+    getJokes();
+  }, [getJokes]);
 
   function createAddTodoPayload(input: string): AddTodoPayload {
     return {
