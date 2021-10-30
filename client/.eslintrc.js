@@ -37,6 +37,7 @@ module.exports = {
     "react-native",
   ],
   rules: {
+    "no-console": "off",
     semi: ["error", "always"],
     quotes: ["error", "double"],
     "no-use-before-define": "off",
